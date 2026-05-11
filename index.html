@@ -7,625 +7,206 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Brand foundations */
-    --bg: #FFF8F3;
-    --surface: #ffffff;
-    --surface-raised: #FFF8F3;
-    --surface-hover: #f5ede6;
-    --border: rgba(47,23,22,0.08);
-    --border-accent: rgba(47,23,22,0.14);
-    --text-primary: #2F1716;
-    --text-secondary: #6b5a59;
-    --text-muted: #9e8e8d;
-
-    /* Brand accents */
-    --accent-blue: #ABC0FF;     /* Blavender */
-    --accent-green: #52DBC1;    /* Chatty Green */
-    --accent-orange: #FF9F84;   /* Melon */
-    --accent-purple: #ABC0FF;   /* Blavender */
-    --accent-pink: #FFC7F6;     /* Pink */
-    --accent-red: #FF9F84;      /* Melon */
-    --accent-cyan: #B1E0CE;     /* Light Chatty */
-
-    /* Semantic */
-    --positive: #3bb891;
-    --negative: #e05a4a;
-    --neutral: #6b5a59;
-
-    /* Card top-bar stronger variants */
-    --bar-blavender: #8aa3e8;
-    --bar-green: #3cc4a8;
-    --bar-melon: #f0845e;
-    --bar-pink: #f0a0de;
-    --bar-chatty: #8bcdb5;
-
-    --radius: 12px;
-    --radius-sm: 8px;
-    --shadow: 0 1px 3px rgba(47,23,22,0.06), 0 4px 12px rgba(47,23,22,0.04);
+    --bg:#FFF8F3;--surface:#fff;--surface-raised:#FFF8F3;--surface-hover:#f5ede6;
+    --border:rgba(47,23,22,.08);--text-primary:#2F1716;--text-secondary:#6b5a59;--text-muted:#9e8e8d;
+    --accent-blue:#ABC0FF;--accent-green:#52DBC1;--accent-orange:#FF9F84;--accent-pink:#FFC7F6;--accent-cyan:#B1E0CE;
+    --bar-blavender:#8aa3e8;--bar-green:#3cc4a8;--bar-melon:#f0845e;--bar-pink:#f0a0de;--bar-chatty:#8bcdb5;
+    --positive:#3bb891;--negative:#e05a4a;--neutral:#6b5a59;
+    --radius:12px;--shadow:0 1px 3px rgba(47,23,22,.06),0 4px 12px rgba(47,23,22,.04);
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 32px;
-    line-height: 1.5;
-  }
-
-  .dashboard {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .header h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-
-  .header .subtitle {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-  }
-
-  .week-badge {
-    display: inline-block;
-    background: rgba(171,192,255,0.2);
-    color: var(--bar-blavender);
-    font-weight: 600;
-    font-size: 13px;
-    padding: 4px 14px;
-    border-radius: 20px;
-  }
-
-  /* Sections */
-  .section {
-    margin-bottom: 32px;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  .section-band {
-    width: 4px;
-    height: 24px;
-    border-radius: 2px;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  /* Metric cards */
-  .metrics-grid {
-    display: grid;
-    gap: 12px;
-  }
-
-  .metrics-grid.three { grid-template-columns: repeat(3, 1fr); }
-  .metrics-grid.four { grid-template-columns: repeat(4, 1fr); }
-
-  .metric-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .metric-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-  }
-
-  .metric-card.blavender::before { background: var(--bar-blavender); }
-  .metric-card.green::before { background: var(--bar-green); }
-  .metric-card.melon::before { background: var(--bar-melon); }
-  .metric-card.pink::before { background: var(--bar-pink); }
-  .metric-card.chatty::before { background: var(--bar-chatty); }
-
-  .metric-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .metric-value {
-    font-family: 'Fraunces', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.2;
-  }
-
-  .metric-detail {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-
-  .metric-change {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-top: 6px;
-  }
-
-  .metric-change.up {
-    color: var(--positive);
-    background: rgba(59, 184, 145, 0.1);
-  }
-
-  .metric-change.down {
-    color: var(--negative);
-    background: rgba(224, 90, 74, 0.1);
-  }
-
-  .metric-change.neutral {
-    color: var(--neutral);
-    background: rgba(107, 90, 89, 0.08);
-  }
-
-  /* Editable fields */
-  .editable {
-    cursor: text;
-    border-radius: 4px;
-    padding: 1px 4px;
-    margin: -1px -4px;
-    transition: all 0.15s ease;
-    outline: none;
-  }
-
-  .editable:hover { background: rgba(47,23,22,0.03); }
-  .editable:focus { background: rgba(47,23,22,0.04); box-shadow: 0 0 0 2px rgba(171,192,255,0.4); }
-
-  /* Heatmap */
-  .heatmap-container { overflow-x: auto; }
-
-  .heatmap-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 3px;
-    font-size: 11px;
-  }
-
-  .heatmap-table th {
-    font-weight: 500;
-    color: var(--text-muted);
-    padding: 2px 0;
-    text-align: center;
-    font-size: 10px;
-  }
-
-  .heatmap-table td {
-    text-align: center;
-    border-radius: 3px;
-    padding: 6px 0;
-    font-size: 10px;
-    font-weight: 500;
-    min-width: 28px;
-    transition: transform 0.1s;
-  }
-
-  .heatmap-table td:hover { transform: scale(1.15); }
-
-  .heatmap-table td.day-label {
-    text-align: right;
-    padding-right: 8px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    min-width: 36px;
-  }
-
-  .heatmap-legend {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    justify-content: flex-end;
-  }
-
-  .heatmap-legend-bar {
-    width: 120px;
-    height: 8px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, #FFF8F3, #52DBC1);
-  }
-
-  .heatmap-legend-labels {
-    display: flex;
-    gap: 4px;
-    font-size: 10px;
-    color: var(--text-muted);
-  }
-
-  /* Donut chart */
-  .donut-legend {
-    list-style: none;
-    font-size: 12px;
-  }
-
-  .donut-legend li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 3px 0;
-  }
-
-  .donut-legend .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .donut-legend .count {
-    margin-left: auto;
-    font-weight: 600;
-    color: var(--text-secondary);
-  }
-
-  /* Tags */
-  .tags-container {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .tag-row {
-    display: grid;
-    grid-template-columns: 36px 1fr 60px 1fr 28px;
-    align-items: center;
-    padding: 12px 16px;
-    gap: 12px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-
-  .tag-row:last-child, .tag-row.expandable:last-of-type { border-bottom: none; }
-
-  .tag-row.expandable { cursor: pointer; }
-  .tag-row.expandable:hover { background: var(--surface-hover); }
-
-  .tag-rank {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text-muted);
-    text-align: center;
-  }
-
-  .tag-name {
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--text-primary);
-  }
-
-  .tag-count {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text-primary);
-    text-align: right;
-  }
-
-  .tag-bar-wrapper {
-    height: 6px;
-    background: rgba(47,23,22,0.04);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .tag-bar {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.4s ease;
-  }
-
-  .tag-expand {
-    font-size: 14px;
-    color: var(--text-muted);
-    text-align: center;
-    transition: transform 0.2s;
-  }
-
-  .tag-row.expandable.open .tag-expand { transform: rotate(180deg); }
-
-  /* Sentiment panel */
-  .sentiment-panel {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: var(--surface-raised);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .sentiment-panel.open {
-    max-height: 600px;
-  }
-
-  .sentiment-inner {
-    padding: 20px 24px 20px 64px;
-  }
-
-  .sentiment-header {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-
-  .sentiment-stat {
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .sentiment-stat strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  .sentiment-section {
-    margin-bottom: 14px;
-  }
-
-  .sentiment-section-title {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .reason-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .reason-pct {
-    font-weight: 600;
-    min-width: 36px;
-    color: var(--text-primary);
-  }
-
-  .quote {
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-secondary);
-    padding: 4px 0 4px 12px;
-    border-left: 2px solid var(--accent-green);
-    margin-bottom: 6px;
-  }
-
-  .sentiment-summary {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-
-  /* Notes */
-  .notes-container {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    box-shadow: var(--shadow);
-  }
-
-  .notes-content {
-    min-height: 80px;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    outline: none;
-    cursor: text;
-  }
-
-  .notes-content:empty::before {
-    content: 'Click here to add your notes for the week...';
-    color: var(--text-muted);
-  }
-
-  .notes-content:focus {
-    color: var(--text-primary);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    body { padding: 16px; }
-    .metrics-grid.three, .metrics-grid.four { grid-template-columns: repeat(2, 1fr); }
-    .metric-value { font-size: 22px; }
-    .breakdown-grid { grid-template-columns: 1fr !important; }
-    .tag-row { grid-template-columns: 28px 1fr 50px 80px 20px; }
-    .sentiment-inner { padding-left: 28px; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;padding:32px;line-height:1.5}
+  .dashboard{max-width:1100px;margin:0 auto}
+  .header{text-align:center;margin-bottom:40px}
+  .header h1{font-family:'Fraunces',serif;font-size:32px;font-weight:700;margin-bottom:4px}
+  .header .subtitle{font-size:14px;color:var(--text-secondary);margin-bottom:8px}
+  .week-badge{display:inline-block;background:rgba(171,192,255,.2);color:var(--bar-blavender);font-weight:600;font-size:13px;padding:4px 14px;border-radius:20px}
+  .section{margin-bottom:32px}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .section-band{width:4px;height:24px;border-radius:2px}
+  .section-title{font-family:'Fraunces',serif;font-size:20px;font-weight:600}
+  .metrics-grid{display:grid;gap:12px}
+  .metrics-grid.three{grid-template-columns:repeat(3,1fr)}
+  .metrics-grid.four{grid-template-columns:repeat(4,1fr)}
+  .metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .metric-card.blavender::before{background:var(--bar-blavender)}
+  .metric-card.green::before{background:var(--bar-green)}
+  .metric-card.pink::before{background:var(--bar-pink)}
+  .metric-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:8px}
+  .metric-value{font-family:'Fraunces',serif;font-size:28px;font-weight:700;line-height:1.2}
+  .metric-detail{font-size:12px;color:var(--text-muted);margin-top:4px}
+  .metric-change{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:6px}
+  .metric-change.up{color:var(--positive);background:rgba(59,184,145,.1)}
+  .metric-change.down{color:var(--negative);background:rgba(224,90,74,.1)}
+  .editable{cursor:text;border-radius:4px;padding:1px 4px;margin:-1px -4px;outline:none}
+  .editable:hover{background:rgba(47,23,22,.03)}
+  .editable:focus{background:rgba(47,23,22,.04);box-shadow:0 0 0 2px rgba(171,192,255,.4)}
+  .heatmap-container{overflow-x:auto}
+  .heatmap-table{width:100%;border-collapse:separate;border-spacing:3px;font-size:11px}
+  .heatmap-table th{font-weight:500;color:var(--text-muted);padding:2px 0;text-align:center;font-size:10px}
+  .heatmap-table td{text-align:center;border-radius:3px;padding:6px 0;font-size:10px;font-weight:500;min-width:28px;transition:transform .1s}
+  .heatmap-table td:hover{transform:scale(1.15)}
+  .heatmap-table td.day-label{text-align:right;padding-right:8px;font-weight:600;color:var(--text-secondary);min-width:36px}
+  .heatmap-table td.day-label:hover{transform:none}
+  .heatmap-legend{display:flex;align-items:center;gap:8px;margin-top:10px;justify-content:flex-end}
+  .heatmap-legend-bar{width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,#FFF8F3,#52DBC1)}
+  .heatmap-legend-labels{display:flex;gap:4px;font-size:10px;color:var(--text-muted)}
+  .donut-legend{list-style:none;font-size:12px}
+  .donut-legend li{display:flex;align-items:center;gap:8px;padding:3px 0}
+  .donut-legend .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .donut-legend .count{margin-left:auto;font-weight:600;color:var(--text-secondary)}
+  .tags-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .tag-row{display:grid;grid-template-columns:36px 1fr 60px 1fr 28px;align-items:center;padding:12px 16px;gap:12px;border-bottom:1px solid var(--border);transition:background .15s}
+  .tag-row:last-child{border-bottom:none}
+  .tag-row.expandable{cursor:pointer}
+  .tag-row.expandable:hover{background:var(--surface-hover)}
+  .tag-rank{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--text-muted);text-align:center}
+  .tag-name{font-weight:500;font-size:14px}
+  .tag-count{font-family:'Fraunces',serif;font-weight:700;font-size:15px;text-align:right}
+  .tag-bar-wrapper{height:6px;background:rgba(47,23,22,.04);border-radius:3px;overflow:hidden}
+  .tag-bar{height:100%;border-radius:3px}
+  .tag-expand{font-size:14px;color:var(--text-muted);text-align:center;transition:transform .2s}
+  .tag-row.expandable.open .tag-expand{transform:rotate(180deg)}
+  .sentiment-panel{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--surface-raised);border-bottom:1px solid var(--border)}
+  .sentiment-panel.open{max-height:600px}
+  .sentiment-inner{padding:20px 24px 20px 64px}
+  .sentiment-section{margin-bottom:14px}
+  .sentiment-section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:8px}
+  .quote{font-size:13px;font-style:italic;color:var(--text-secondary);padding:4px 0 4px 12px;border-left:2px solid var(--accent-green);margin-bottom:6px}
+  .notes-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow)}
+  .notes-content{min-height:80px;font-size:14px;line-height:1.7;color:var(--text-secondary);outline:none;cursor:text}
+  .notes-content:empty::before{content:'Click here to add your notes for the week...';color:var(--text-muted)}
+  .notes-content:focus{color:var(--text-primary)}
+  @media(max-width:768px){
+    body{padding:16px}
+    .metrics-grid.three,.metrics-grid.four{grid-template-columns:repeat(2,1fr)}
+    .metric-value{font-size:22px}
+    .breakdown-grid{grid-template-columns:1fr!important}
+    .tag-row{grid-template-columns:28px 1fr 50px 80px 20px}
+    .sentiment-inner{padding-left:28px}
   }
 </style>
 </head>
 <body>
-
 <div class="dashboard">
-
-  <!-- Header -->
   <div class="header">
     <h1>Weekly Support Stats</h1>
     <div class="subtitle">Chatbooks CX Team</div>
-    <div class="week-badge" id="week-range">Loading...</div>
+    <div class="week-badge">May 4 – May 10, 2026</div>
   </div>
 
-  <!-- 1. Conversation Data -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-blue);"></div>
+      <div class="section-band" style="background:var(--accent-blue)"></div>
       <div class="section-title">Conversation Data</div>
     </div>
     <div class="metrics-grid three">
       <div class="metric-card blavender">
         <div class="metric-label">New Conversations</div>
-        <div class="metric-value editable" contenteditable="true">9,409</div>
-        <div class="metric-change neutral editable" contenteditable="true">— vs last week</div>
+        <div class="metric-value editable" contenteditable="true">5,948</div>
+        <div class="metric-change up editable" contenteditable="true">▲ 4.7% YoY</div>
       </div>
       <div class="metric-card blavender">
         <div class="metric-label">Total Trooper Assigns</div>
-        <div class="metric-value editable" contenteditable="true">4,815</div>
-        <div class="metric-change neutral editable" contenteditable="true">— vs last week</div>
+        <div class="metric-value editable" contenteditable="true">4,586</div>
+        <div class="metric-change up editable" contenteditable="true">▲ 1.8% YoY</div>
       </div>
       <div class="metric-card blavender">
         <div class="metric-label">Fin Resolved</div>
-        <div class="metric-value editable" contenteditable="true">1,356</div>
-        <div class="metric-change neutral editable" contenteditable="true">— vs last week</div>
+        <div class="metric-value editable" contenteditable="true">909</div>
+        <div class="metric-change up editable" contenteditable="true">▲ 90.2% YoY</div>
       </div>
     </div>
   </div>
 
-  <!-- 2. Team Performance -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-green);"></div>
+      <div class="section-band" style="background:var(--accent-green)"></div>
       <div class="section-title">Team Performance</div>
     </div>
     <div class="metrics-grid four">
       <div class="metric-card green">
         <div class="metric-label">Live Chat TTFR</div>
-        <div class="metric-value editable" contenteditable="true">3m 49s</div>
-        <div class="metric-detail editable" contenteditable="true">median (avg 6m 49s)</div>
+        <div class="metric-value editable" contenteditable="true">1m 10s</div>
+        <div class="metric-detail editable" contenteditable="true">median</div>
       </div>
       <div class="metric-card green">
         <div class="metric-label">Surveyed CSAT</div>
-        <div class="metric-value editable" contenteditable="true">95.5%</div>
-        <div class="metric-detail editable" contenteditable="true">1,161 ratings</div>
+        <div class="metric-value editable" contenteditable="true">93.9%</div>
+        <div class="metric-detail editable" contenteditable="true">945 of 1,006 rated 4–5</div>
       </div>
       <div class="metric-card green">
-        <div class="metric-label">Human CX Score</div>
-        <div class="metric-value editable" contenteditable="true">4.72</div>
-        <div class="metric-detail editable" contenteditable="true">1,931 scored convos</div>
+        <div class="metric-label">Trooper CX Score</div>
+        <div class="metric-value editable" contenteditable="true">84.1%</div>
+        <div class="metric-detail editable" contenteditable="true">human agent score</div>
       </div>
       <div class="metric-card green">
         <div class="metric-label">Average Hrs</div>
-        <div class="metric-value editable" contenteditable="true">23.2</div>
-        <div class="metric-detail editable" contenteditable="true">avg per agent (27 agents)</div>
+        <div class="metric-value editable" contenteditable="true">20.47</div>
+        <div class="metric-detail editable" contenteditable="true">avg per agent</div>
       </div>
       <div class="metric-card green">
         <div class="metric-label">Saved Subs</div>
-        <div class="metric-value editable" contenteditable="true">14</div>
+        <div class="metric-value editable" contenteditable="true">4</div>
         <div class="metric-detail editable" contenteditable="true">this week</div>
       </div>
       <div class="metric-card green">
         <div class="metric-label">Assigns per Hour</div>
-        <div class="metric-value editable" contenteditable="true">8.2</div>
+        <div class="metric-value editable" contenteditable="true">8.16</div>
         <div class="metric-detail editable" contenteditable="true">team avg</div>
       </div>
     </div>
   </div>
 
-  <!-- 3. Fin Performance -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-pink);"></div>
+      <div class="section-band" style="background:var(--accent-pink)"></div>
       <div class="section-title">Fin Performance</div>
     </div>
     <div class="metrics-grid four">
       <div class="metric-card pink">
         <div class="metric-label">Total Resolves</div>
-        <div class="metric-value editable" contenteditable="true">1,356</div>
-        <div class="metric-detail editable" contenteditable="true">1,188 assumed · 168 confirmed</div>
+        <div class="metric-value editable" contenteditable="true">909</div>
+        <div class="metric-detail editable" contenteditable="true">909 of 2,579 conversations</div>
       </div>
       <div class="metric-card pink">
         <div class="metric-label">Resolution Rate</div>
-        <div class="metric-value editable" contenteditable="true">36.9%</div>
-        <div class="metric-detail editable" contenteditable="true">AI answer resolution rate</div>
+        <div class="metric-value editable" contenteditable="true">35.2%</div>
+        <div class="metric-detail editable" contenteditable="true">▼ 1.6% vs prior week</div>
       </div>
       <div class="metric-card pink">
         <div class="metric-label">CSAT</div>
-        <div class="metric-value editable" contenteditable="true">84.1%</div>
-        <div class="metric-detail editable" contenteditable="true">53 of 63 rated 4–5</div>
+        <div class="metric-value editable" contenteditable="true">83.3%</div>
+        <div class="metric-detail editable" contenteditable="true">40 of 48 rated 4–5</div>
       </div>
       <div class="metric-card pink">
         <div class="metric-label">Fin CX Score</div>
-        <div class="metric-value editable" contenteditable="true">4.56</div>
-        <div class="metric-detail editable" contenteditable="true">415 scored convos</div>
+        <div class="metric-value editable" contenteditable="true">53.5%</div>
+        <div class="metric-detail editable" contenteditable="true">▲ 4.8% vs prior week</div>
       </div>
     </div>
   </div>
 
-  <!-- 4. Conversation Breakdown -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-blue);"></div>
+      <div class="section-band" style="background:var(--accent-blue)"></div>
       <div class="section-title">Conversation Breakdown</div>
     </div>
-    <div class="breakdown-grid" style="display: grid; grid-template-columns: 1fr 320px; gap: 16px;">
-
-      <!-- Heatmap -->
-      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);">
-        <div style="font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px;">Hourly Distribution</div>
+    <div class="breakdown-grid" style="display:grid;grid-template-columns:1fr 320px;gap:16px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)">
+        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px">Hourly Distribution</div>
         <div class="heatmap-container">
           <table class="heatmap-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>12a</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-                <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th>
-                <th>12p</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-                <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th>
-              </tr>
-            </thead>
+            <thead><tr><th></th><th>12a</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12p</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr></thead>
             <tbody id="heatmap-body"></tbody>
           </table>
-          <div class="heatmap-legend">
-            <div class="heatmap-legend-bar"></div>
-            <div class="heatmap-legend-labels">
-              <span>0</span>
-              <span id="heatmap-max">520</span>
-            </div>
-          </div>
+          <div class="heatmap-legend"><div class="heatmap-legend-bar"></div><div class="heatmap-legend-labels"><span>0</span><span id="heatmap-max"></span></div></div>
         </div>
       </div>
-
-      <!-- Donut Chart -->
-      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);">
-        <div style="font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px;">By Channel</div>
-        <div style="display: flex; align-items: center; gap: 20px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)">
+        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px">By Channel</div>
+        <div style="display:flex;align-items:center;gap:20px">
           <svg id="donut-chart" viewBox="0 0 160 160" width="130" height="130"></svg>
           <ul class="donut-legend" id="donut-legend"></ul>
         </div>
@@ -633,273 +214,149 @@
     </div>
   </div>
 
-  <!-- 5. Top Tags -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-orange);"></div>
+      <div class="section-band" style="background:var(--accent-orange)"></div>
       <div class="section-title">Top Tags</div>
     </div>
     <div class="tags-container">
-
-      <!-- Tag 1: Cancel Subscription (expandable) -->
       <div class="tag-row expandable" onclick="toggleSentiment(this)">
         <div class="tag-rank">1</div>
         <div class="tag-name editable" contenteditable="true">Cancel Subscription</div>
-        <div class="tag-count editable" contenteditable="true">1,429</div>
-        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:100%; background: var(--accent-orange);"></div></div>
+        <div class="tag-count editable" contenteditable="true">558</div>
+        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:100%;background:var(--accent-orange)"></div></div>
         <div class="tag-expand">▾</div>
       </div>
       <div class="sentiment-panel">
         <div class="sentiment-inner">
-          <div class="sentiment-header">
-            <div class="sentiment-stat">Avg CX Score <strong>4.62 / 5</strong></div>
-            <div class="sentiment-stat">★5 — <strong>162</strong> &nbsp; ★4 — <strong>100</strong></div>
-          </div>
           <div class="sentiment-section">
-            <div class="sentiment-section-title">Why they wrote in</div>
-            <div class="reason-bar"><span class="reason-pct">45%</span> Wanted to cancel</div>
-            <div class="reason-bar"><span class="reason-pct">31%</span> Requesting a refund</div>
-            <div class="reason-bar"><span class="reason-pct">19%</span> Frustrated or upset</div>
-            <div class="reason-bar"><span class="reason-pct">15%</span> Confused about policy</div>
-            <div class="reason-bar"><span class="reason-pct">9%</span> Access / technical issues</div>
+            <div class="sentiment-section-title">What customers asked</div>
+            <div class="quote">"I didn't want to renew my subscription — and saw that my card had been declined since it was expired so I figured you would not charge"</div>
+            <div class="quote">"I do not want the subscription this year please — it's too expensive and need a refund please"</div>
+            <div class="quote">"I have so many credits that it's gonna keep billing me every month and I just have not had time to use the ones I have"</div>
           </div>
-          <div class="sentiment-section">
-            <div class="sentiment-section-title">What customers said</div>
-            <div class="quote">"Great customer service"</div>
-            <div class="quote">"Help with everything I needed 10/10"</div>
-            <div class="quote">"I really appreciate the refund and your help with the cover!"</div>
-          </div>
-          <div class="sentiment-summary">Nearly half want a straightforward cancellation; a third also need a refund. 19% arrive frustrated — often about unexpected renewal charges or unclear cancellation policies. Team converts these well, with many customers leaving positive remarks despite initially wanting to leave.</div>
         </div>
       </div>
 
-      <!-- Tag 2: Billing Question (expandable) -->
       <div class="tag-row expandable" onclick="toggleSentiment(this)">
         <div class="tag-rank">2</div>
         <div class="tag-name editable" contenteditable="true">Billing Question</div>
-        <div class="tag-count editable" contenteditable="true">637</div>
-        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:44.6%; background: var(--accent-green);"></div></div>
+        <div class="tag-count editable" contenteditable="true">347</div>
+        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:62.2%;background:var(--accent-green)"></div></div>
         <div class="tag-expand">▾</div>
       </div>
       <div class="sentiment-panel">
         <div class="sentiment-inner">
-          <div class="sentiment-header">
-            <div class="sentiment-stat">Avg CX Score <strong>4.64 / 5</strong></div>
-            <div class="sentiment-stat">★5 — <strong>84</strong> &nbsp; ★4 — <strong>47</strong></div>
-          </div>
           <div class="sentiment-section">
-            <div class="sentiment-section-title">Why they wrote in</div>
-            <div class="reason-bar"><span class="reason-pct">29%</span> Confused about policy / billing</div>
-            <div class="reason-bar"><span class="reason-pct">20%</span> Frustrated or upset</div>
-            <div class="reason-bar"><span class="reason-pct">16%</span> Wanting to cancel</div>
-            <div class="reason-bar"><span class="reason-pct">13%</span> Requesting a refund</div>
-            <div class="reason-bar"><span class="reason-pct">8%</span> Double / duplicate charges</div>
+            <div class="sentiment-section-title">What customers asked</div>
+            <div class="quote">"Hi I need help with a charge that I got charged with and am confused as to why if I don't have a subscription?"</div>
+            <div class="quote">"I did not realize that it was setting me up for a subscription. I ONLY wanted to purchase the 12 books for $24 and no more than that."</div>
+            <div class="quote">"I thought I could just pick and choose when I want to print them though"</div>
           </div>
-          <div class="sentiment-section">
-            <div class="sentiment-section-title">What customers said</div>
-            <div class="quote">"Jamie was wonderful!"</div>
-            <div class="quote">"She was very helpful and courteous"</div>
-            <div class="quote">"Absolutely loved talking to Christine. Helpful, patient, and kind."</div>
-          </div>
-          <div class="sentiment-summary">The top reason is confusion — customers don't understand what they were charged for or why. Unexpected renewals, duplicate charges, and price increases round out the mix. Clear explanations from the team are the key to resolution here.</div>
         </div>
       </div>
 
-      <!-- Tag 3: Expiring Credits (expandable) -->
       <div class="tag-row expandable" onclick="toggleSentiment(this)">
         <div class="tag-rank">3</div>
         <div class="tag-name editable" contenteditable="true">Expiring Credits</div>
-        <div class="tag-count editable" contenteditable="true">455</div>
-        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:31.8%; background: var(--accent-pink);"></div></div>
+        <div class="tag-count editable" contenteditable="true">251</div>
+        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:45%;background:var(--accent-pink)"></div></div>
         <div class="tag-expand">▾</div>
       </div>
       <div class="sentiment-panel">
         <div class="sentiment-inner">
-          <div class="sentiment-header">
-            <div class="sentiment-stat">Avg CX Score <strong>4.83 / 5</strong></div>
-            <div class="sentiment-stat">★5 — <strong>123</strong> &nbsp; ★4 — <strong>25</strong></div>
-          </div>
           <div class="sentiment-section">
-            <div class="sentiment-section-title">Why they wrote in</div>
-            <div class="reason-bar"><span class="reason-pct">78%</span> Credits expiring / need extension</div>
-            <div class="reason-bar"><span class="reason-pct">11%</span> Access / technical issues</div>
-            <div class="reason-bar"><span class="reason-pct">7%</span> Frustrated or upset</div>
-            <div class="reason-bar"><span class="reason-pct">5%</span> Confused about policy</div>
+            <div class="sentiment-section-title">What customers asked</div>
+            <div class="quote">"I also still have credits to use from last year — am I able to still use those?"</div>
+            <div class="quote">"Curious if I can still use last year's credits if my subscription isn't currently active"</div>
+            <div class="quote">"Can you extend my credits? I haven't had time to make my books yet"</div>
           </div>
-          <div class="sentiment-section">
-            <div class="sentiment-section-title">What customers said</div>
-            <div class="quote">"Brett was super helpful and resolved my problems so I didn't lose book credits."</div>
-            <div class="quote">"Easy and friendly and solved my concern!!"</div>
-            <div class="quote">"Katie is amazing! So efficient and kind."</div>
-          </div>
-          <div class="sentiment-summary">The simplest of the top 3 — 78% just need a credit extension. The team resolves these fast, which is why this tag has the highest CX score (4.83). Low frustration, high gratitude. A good candidate for Fin self-serve if credit extensions can be automated.</div>
         </div>
       </div>
 
-      <!-- Tag 4 -->
       <div class="tag-row">
         <div class="tag-rank">4</div>
-        <div class="tag-name editable" contenteditable="true">Marketing Experiment</div>
-        <div class="tag-count editable" contenteditable="true">387</div>
-        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:27.1%; background: var(--accent-blue);"></div></div>
+        <div class="tag-name editable" contenteditable="true">Where's My Order</div>
+        <div class="tag-count editable" contenteditable="true">250</div>
+        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:44.8%;background:var(--accent-blue)"></div></div>
         <div style="width:28px"></div>
       </div>
 
-      <!-- Tag 5 -->
       <div class="tag-row">
         <div class="tag-rank">5</div>
-        <div class="tag-name editable" contenteditable="true">Refund</div>
-        <div class="tag-count editable" contenteditable="true">325</div>
-        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:22.7%; background: var(--accent-cyan);"></div></div>
+        <div class="tag-name editable" contenteditable="true">Payment Method</div>
+        <div class="tag-count editable" contenteditable="true">220</div>
+        <div class="tag-bar-wrapper"><div class="tag-bar" style="width:39.4%;background:var(--accent-cyan)"></div></div>
         <div style="width:28px"></div>
       </div>
-
     </div>
   </div>
 
-  <!-- 6. Notes -->
   <div class="section">
     <div class="section-header">
-      <div class="section-band" style="background: var(--accent-cyan);"></div>
+      <div class="section-band" style="background:var(--accent-cyan)"></div>
       <div class="section-title">Notes</div>
     </div>
     <div class="notes-container">
       <div class="notes-content" contenteditable="true"></div>
     </div>
   </div>
-
 </div>
 
 <script>
-  // Auto-calculate last Sunday–Saturday
-  (function() {
-    const today = new Date();
-    const day = today.getDay();
-    const lastSat = new Date(today);
-    lastSat.setDate(today.getDate() - (day === 6 ? 7 : day + 1));
-    const lastSun = new Date(lastSat);
-    lastSun.setDate(lastSat.getDate() - 6);
-    const fmt = d => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-    document.getElementById('week-range').textContent = fmt(lastSun) + ' – ' + fmt(lastSat) + ', ' + lastSat.getFullYear();
-  })();
-
-  // Heatmap data (sample — replaced each week with real data)
   const heatmapData = {
-    "Sun": [42,18,12,8,5,7,28,65,112,145,168,182,195,210,198,175,162,140,118,95,78,62,55,48],
-    "Mon": [35,15,10,6,4,5,22,58,142,285,380,420,445,460,425,395,350,280,195,135,95,72,55,40],
-    "Tue": [38,16,11,7,4,6,24,62,155,310,405,448,470,485,450,410,365,295,205,142,100,75,58,42],
-    "Wed": [36,14,9,5,3,5,20,55,138,290,390,435,458,475,440,400,355,285,198,138,96,70,54,39],
-    "Thu": [40,17,12,8,5,7,25,60,148,300,395,440,465,480,445,405,360,290,200,140,98,74,56,41],
-    "Fri": [32,13,8,5,3,4,18,48,125,265,355,400,425,440,410,375,335,268,185,128,88,65,48,35],
-    "Sat": [45,20,14,10,6,8,30,68,118,155,178,195,205,220,210,188,172,148,125,100,82,68,58,50]
+    "Mon":[9,10,6,14,29,46,87,87,122,154,126,97,87,100,90,71,81,53,62,96,50,44,34,14],
+    "Tue":[6,9,3,5,11,18,35,62,82,75,75,88,91,93,79,66,51,48,45,46,31,23,20,20],
+    "Wed":[9,3,16,17,17,20,43,51,82,82,73,70,80,61,62,67,80,41,58,58,24,17,22,13],
+    "Thu":[10,5,2,5,17,15,38,52,50,48,62,68,52,60,53,54,45,43,38,28,38,20,26,7],
+    "Fri":[4,3,3,10,7,19,40,48,47,65,54,54,54,45,56,46,37,34,36,39,30,23,27,9],
+    "Sat":[7,4,1,1,8,15,20,16,31,34,47,38,43,26,33,19,27,16,36,39,18,25,19,15],
+    "Sun":[12,12,8,13,5,28,32,25,50,49,50,52,56,49,33,28,38,35,52,56,36,35,32,22]
   };
-
-  (function() {
-    const tbody = document.getElementById('heatmap-body');
-    const allVals = Object.values(heatmapData).flat();
-    const maxVal = Math.max(...allVals);
-    document.getElementById('heatmap-max').textContent = maxVal;
-
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    days.forEach(day => {
-      const tr = document.createElement('tr');
-      const tdLabel = document.createElement('td');
-      tdLabel.className = 'day-label';
-      tdLabel.textContent = day;
-      tr.appendChild(tdLabel);
-
-      heatmapData[day].forEach(val => {
-        const td = document.createElement('td');
-        const intensity = maxVal > 0 ? val / maxVal : 0;
-        const r = Math.round(255 - (255 - 82) * intensity);
-        const g = Math.round(248 - (248 - 219) * intensity);
-        const b = Math.round(243 - (243 - 193) * intensity);
-        td.style.background = `rgb(${r},${g},${b})`;
-        td.style.color = intensity > 0.6 ? '#fff' : 'var(--text-muted)';
-        td.textContent = val > 0 ? val : '';
-        td.title = `${day} ${val}`;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
+  (function(){
+    const tbody=document.getElementById('heatmap-body');
+    const allVals=Object.values(heatmapData).flat();
+    const maxVal=Math.max(...allVals);
+    document.getElementById('heatmap-max').textContent=maxVal;
+    ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(day=>{
+      const tr=document.createElement('tr');
+      const tdL=document.createElement('td');tdL.className='day-label';tdL.textContent=day;tr.appendChild(tdL);
+      heatmapData[day].forEach(val=>{
+        const td=document.createElement('td');
+        const i=maxVal>0?val/maxVal:0;
+        td.style.background=`rgb(${Math.round(255-(255-82)*i)},${Math.round(248-(248-219)*i)},${Math.round(243-(243-193)*i)})`;
+        td.style.color=i>.6?'#fff':'var(--text-muted)';
+        td.textContent=val>0?val:'';td.title=`${day} ${val}`;tr.appendChild(td);
+      });tbody.appendChild(tr);
     });
   })();
-
-  // Donut chart
-  (function() {
-    const channels = [
-      { name: 'Email', count: 4186, color: '#8aa3e8' },
-      { name: 'Live Chat', count: 2801, color: '#3cc4a8' },
-      { name: 'Unassigned', count: 1893, color: '#f0845e' },
-      { name: 'Cancel Sub', count: 334, color: '#f0a0de' },
-      { name: 'Social', count: 67, color: '#8bcdb5' },
-      { name: 'Other', count: 128, color: '#d4ccc8' },
-    ];
-    const total = channels.reduce((s, c) => s + c.count, 0);
-    const svg = document.getElementById('donut-chart');
-    const cx = 80, cy = 80, r = 60, inner = 38;
-    let angle = -90;
-
-    channels.forEach(ch => {
-      const pct = ch.count / total;
-      const a1 = angle * Math.PI / 180;
-      angle += pct * 360;
-      const a2 = angle * Math.PI / 180;
-      const large = pct > 0.5 ? 1 : 0;
-      const x1o = cx + r * Math.cos(a1), y1o = cy + r * Math.sin(a1);
-      const x2o = cx + r * Math.cos(a2), y2o = cy + r * Math.sin(a2);
-      const x1i = cx + inner * Math.cos(a2), y1i = cy + inner * Math.sin(a2);
-      const x2i = cx + inner * Math.cos(a1), y2i = cy + inner * Math.sin(a1);
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', `M${x1o},${y1o} A${r},${r} 0 ${large} 1 ${x2o},${y2o} L${x1i},${y1i} A${inner},${inner} 0 ${large} 0 ${x2i},${y2i} Z`);
-      path.setAttribute('fill', ch.color);
-      path.style.transition = 'opacity 0.2s';
-      path.addEventListener('mouseenter', () => path.style.opacity = '0.8');
-      path.addEventListener('mouseleave', () => path.style.opacity = '1');
-      svg.appendChild(path);
+  (function(){
+    const ch=[{n:'Email',c:2400,cl:'#8aa3e8'},{n:'Live Chat',c:1800,cl:'#3cc4a8'},{n:'Unassigned',c:1100,cl:'#f0845e'},{n:'SMS',c:374,cl:'#f0a0de'},{n:'Social',c:50,cl:'#8bcdb5'},{n:'Other',c:224,cl:'#d4ccc8'}];
+    const t=ch.reduce((s,c)=>s+c.c,0);const svg=document.getElementById('donut-chart');
+    const cx=80,cy=80,r=60,inner=38;let a=-90;
+    ch.forEach(c=>{const p=c.c/t;const a1=a*Math.PI/180;a+=p*360;const a2=a*Math.PI/180;const l=p>.5?1:0;
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',`M${cx+r*Math.cos(a1)},${cy+r*Math.sin(a1)} A${r},${r} 0 ${l} 1 ${cx+r*Math.cos(a2)},${cy+r*Math.sin(a2)} L${cx+inner*Math.cos(a2)},${cy+inner*Math.sin(a2)} A${inner},${inner} 0 ${l} 0 ${cx+inner*Math.cos(a1)},${cy+inner*Math.sin(a1)} Z`);
+      path.setAttribute('fill',c.cl);path.style.transition='opacity .2s';
+      path.onmouseenter=()=>path.style.opacity='.8';path.onmouseleave=()=>path.style.opacity='1';svg.appendChild(path);
     });
-
-    // Center text
-    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', cx);
-    text.setAttribute('y', cy - 4);
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('font-family', 'Fraunces, serif');
-    text.setAttribute('font-size', '20');
-    text.setAttribute('font-weight', '700');
-    text.setAttribute('fill', '#2F1716');
-    text.textContent = total.toLocaleString();
-    svg.appendChild(text);
-    const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    sub.setAttribute('x', cx);
-    sub.setAttribute('y', cy + 14);
-    sub.setAttribute('text-anchor', 'middle');
-    sub.setAttribute('font-family', 'DM Sans, sans-serif');
-    sub.setAttribute('font-size', '10');
-    sub.setAttribute('fill', '#9e8e8d');
-    sub.textContent = 'total';
-    svg.appendChild(sub);
-
-    // Legend
-    const legend = document.getElementById('donut-legend');
-    channels.forEach(ch => {
-      const li = document.createElement('li');
-      li.innerHTML = `<span class="dot" style="background:${ch.color}"></span><span>${ch.name}</span><span class="count">${ch.count.toLocaleString()}</span>`;
-      legend.appendChild(li);
-    });
+    const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x',cx);txt.setAttribute('y',cy-4);txt.setAttribute('text-anchor','middle');
+    txt.setAttribute('font-family','Fraunces,serif');txt.setAttribute('font-size','20');txt.setAttribute('font-weight','700');txt.setAttribute('fill','#2F1716');
+    txt.textContent=t.toLocaleString();svg.appendChild(txt);
+    const sub=document.createElementNS('http://www.w3.org/2000/svg','text');
+    sub.setAttribute('x',cx);sub.setAttribute('y',cy+14);sub.setAttribute('text-anchor','middle');
+    sub.setAttribute('font-family','DM Sans,sans-serif');sub.setAttribute('font-size','10');sub.setAttribute('fill','#9e8e8d');
+    sub.textContent='total';svg.appendChild(sub);
+    const leg=document.getElementById('donut-legend');
+    ch.forEach(c=>{const li=document.createElement('li');li.innerHTML=`<span class="dot" style="background:${c.cl}"></span><span>${c.n}</span><span class="count">${c.c.toLocaleString()}</span>`;leg.appendChild(li);});
   })();
-
-  // Sentiment toggle
-  function toggleSentiment(row) {
-    const panel = row.nextElementSibling;
-    const isOpen = row.classList.contains('open');
-    document.querySelectorAll('.tag-row.expandable.open').forEach(r => r.classList.remove('open'));
-    document.querySelectorAll('.sentiment-panel.open').forEach(p => p.classList.remove('open'));
-    if (!isOpen) {
-      row.classList.add('open');
-      panel.classList.add('open');
-    }
+  function toggleSentiment(row){
+    const panel=row.nextElementSibling;const isOpen=row.classList.contains('open');
+    document.querySelectorAll('.tag-row.expandable.open').forEach(r=>r.classList.remove('open'));
+    document.querySelectorAll('.sentiment-panel.open').forEach(p=>p.classList.remove('open'));
+    if(!isOpen){row.classList.add('open');panel.classList.add('open');}
   }
 </script>
-
 </body>
 </html>
